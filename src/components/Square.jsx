@@ -4,10 +4,13 @@ import './../Styles.css'
 
 class Square extends React.Component {
 
-  render() {
+  render(props) {
     return (
-      <button className="square">
-        {/* TODO */}
+      <button
+        className="square"
+        onClick={() => this.props.testing()}
+        >
+        {this.props.value}
       </button>
     );
   }
