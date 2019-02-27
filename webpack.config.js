@@ -32,6 +32,13 @@ module.exports = {
   module: {
     rules: [
       {
+  test: /\.css$/,
+  use: [
+    'style-loader',
+    'css-loader'
+  ]
+},
+      {
         test: /\.jsx?$/,
         enforce: "pre",
         loader: "eslint-loader",
@@ -68,7 +75,7 @@ module.exports = {
       }
     ]
   },
-  
+
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
