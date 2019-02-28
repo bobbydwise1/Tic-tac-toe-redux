@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import Game from './Game';
 import Square from './Square'
+import squares from '../reducers/squares-reducer'
 
 class Board extends React.Component {
   constructor(props) {
@@ -15,15 +16,20 @@ class Board extends React.Component {
   }
 
   handleClick(i) {
+    const { dispatch } = this.state;
+
     const squares = this.state.squares.slice();
     if (this.calculateWinner(squares) || squares[i]) {
       return;
-    }
-    squares[i] = this.state.xIsNext ? 'X' : 'O';
-    this.setState({
-      squares: squares,
-      xIsNext: !this.state.xIsNext,
-    });
+    } const action = {
+       type: 'ADD_SQUARE',
+        squares: squares,
+        xIsNext: !this.state.xIsNext
+
+    };
+    dispatch(action);
+
+
   }
 
   renderSquare(i) {
@@ -88,4 +94,4 @@ class Board extends React.Component {
 
 
 
-export default Board;
+export default connect()(Board);
