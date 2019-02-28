@@ -16,20 +16,20 @@ class Board extends React.Component {
   }
 
   handleClick(i) {
-    const { dispatch } = this.state;
-
+    const { dispatch } = this.props;
     const squares = this.state.squares.slice();
     if (this.calculateWinner(squares) || squares[i]) {
       return;
-    } const action = {
+    }
+      squares[i] = this.state.xIsNext ? 'X' : 'O';
+
+    const action = {
        type: 'ADD_SQUARE',
         squares: squares,
         xIsNext: !this.state.xIsNext
 
     };
-    dispatch(action);
-
-
+    dispatch(action)
   }
 
   renderSquare(i) {

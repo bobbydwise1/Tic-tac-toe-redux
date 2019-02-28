@@ -19,11 +19,23 @@ class App extends React.Component {
 
     return(
       <div>
-          <Switch>
-      <Route exact path='/' component={Game} />
-      </Switch>
-        </div>
+        <Switch>
+          <Route exact path='/' component={Game} />
+        </Switch>
+      </div>
     )
+
   }
 }
-export default connect() (App);
+  App.propTypes = {
+    squares  : PropTypes.object,
+    xIsNext  : PropTypes.object
+  };
+  const mapStateToProps = state => {
+    return {
+      squares: state.squares,
+      xIsNext: state.xIsNext
+    };
+  }
+
+export default withRouter (connect(mapStateToProps) (App));
