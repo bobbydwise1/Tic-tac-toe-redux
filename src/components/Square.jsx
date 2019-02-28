@@ -1,18 +1,23 @@
 import React from 'react'
-import './../Styles.css'
+import styled from 'styled-components'
 
 
-class Square extends React.Component {
+const Gridbutton = styled.button`
+  padding: 50px;
+  margin: 15px;
+  background: red;
+  border-radius: 25rem;
+  font-size: 25px;
+`;
 
-  render(props) {
-    return (
-      <button
-        className="square"
-        onClick={() => this.props.testing()}
-        >
-        {this.props.value}
-      </button>
-    );
-  }
+function Square(props) {
+  return (
+
+    <Gridbutton
+      onClick={props.testing}>
+        {props.value}
+    </Gridbutton>
+  );
 }
+
 export default Square;
